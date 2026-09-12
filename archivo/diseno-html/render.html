@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#1C1510;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  img{display:block;}
+</style>
+</head><body>
+<div id="stage"></div>
+<script>
+window.FRAMES=[]; window.__ready=false;
+const px=(s,p)=>{const m=(s||'').match(new RegExp(p+':\\s*(\\d+)px'));return m?+m[1]:0;};
+(async()=>{
+  const txt=await(await fetch('src_board.html')).text();
+  const o=txt.indexOf('<x-dc'); const gt=txt.indexOf('>',o); const c=txt.lastIndexOf('</x-dc>');
+  const inner=txt.slice(gt+1,c);
+  const doc=new DOMParser().parseFromString('<div id=R>'+inner+'</div>','text/html');
+  const R=doc.getElementById('R');
+  R.querySelectorAll('[data-screen-label]').forEach(el=>{
+    const st=el.getAttribute('style')||''; const w=px(st,'width'),h=px(st,'height');
+    const label=el.getAttribute('data-screen-label');
+    if(w&&h){ window.FRAMES.push({label,w,h,html:el.outerHTML}); }
+    else if(label==='Logotipo'||label==='Fundamentos'){ window.FRAMES.push({label,w:0,h:0,html:el.outerHTML}); }
+  });
+  // logo variant cards inside the Logotipo section
+  const logo=R.querySelector('[data-screen-label="Logotipo"]');
+  if(logo){ let n=0;
+    logo.querySelectorAll('div').forEach(el=>{
+      if(el.closest('[data-logo-card]')) return;
+      const st=el.getAttribute('style')||''; const w=px(st,'width'),h=px(st,'height');
+      if(w>=800&&h>=400){ el.setAttribute('data-logo-card','1'); n++;
+        window.FRAMES.push({label:'Logo opcion '+String.fromCharCode(64+n),w,h,html:el.outerHTML}); }
+    });
+  }
+  window.__ready=true;
+})();
+window.show=function(i){
+  const f=window.FRAMES[i];
+  const st=document.getElementById('stage');
+  st.innerHTML=f.html;
+  const el=st.firstElementChild;
+  el.style.margin='0'; el.style.boxShadow='none'; el.style.borderRadius='0';
+  if(!f.w){ // measure sections without fixed size
+    el.style.display=el.style.display||'flex';
+    const r=el.getBoundingClientRect();
+    f.w=Math.ceil(r.width); f.h=Math.ceil(el.scrollHeight||r.height);
+  }
+  return {label:f.label,w:f.w,h:f.h};
+};
+window.assetsReady=async function(){
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(im=>im.decode().catch(()=>{})));
+  return true;
+};
+</script>
+</body></html>

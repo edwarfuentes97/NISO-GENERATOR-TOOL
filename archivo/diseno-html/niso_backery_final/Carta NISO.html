@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carta · NISO Panadería Artesanal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: A4; margin: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Jost', sans-serif; background: #241813; }
+
+  .sheet { width: 210mm; min-height: 297mm; height: 297mm; background: #F5EDDE; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
+  .sheet:last-child { page-break-after: auto; }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .kick { font-family: 'Jost', sans-serif; font-weight: 500; letter-spacing: .42em; text-transform: uppercase; }
+
+  /* monogram */
+  .mono { width: 30mm; height: 30mm; border: 0.5mm solid #C79A5E; display: flex; align-items: center; justify-content: center; }
+  .mono span { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 48pt; line-height: 1; color: #F5EDDE; }
+
+  /* photos */
+  .shot { width: 100%; overflow: hidden; flex: none; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* cover */
+  .cover-panel { flex: 1; background: #2E2018; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+  .cover-panel .frame { position: absolute; inset: 10mm; border: 0.4mm solid rgba(199,154,94,.42); }
+  .cover-panel .k { color: #C79A5E; font-size: 9pt; letter-spacing: .5em; padding-left: .5em; margin-top: 8mm; }
+  .cover-panel .logo { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #F5EDDE; font-size: 46pt; letter-spacing: .2em; padding-left: .2em; margin-top: 3mm; }
+  .cover-panel .slogan { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #E7D3B0; font-size: 15pt; margin-top: 2mm; }
+  .cover-panel .word { font-family: 'Jost', sans-serif; font-size: 9pt; letter-spacing: .34em; text-transform: uppercase; color: #A6947C; position: absolute; bottom: 12mm; }
+
+  .body { padding: 15mm 18mm; flex: 1; display: flex; flex-direction: column; }
+  .phead { display: flex; align-items: center; gap: 6mm; margin-bottom: 9mm; }
+  .phead .pk { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: .38em; text-transform: uppercase; color: #A87A43; white-space: nowrap; }
+  .phead .pline { flex: 1; height: 0.3mm; background: rgba(199,154,94,.6); }
+
+  .prod .cap { display: flex; align-items: baseline; gap: 4mm; margin-top: 5mm; }
+  .prod .pname { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #2E2018; font-size: 21pt; }
+  .prod .lead { flex: 1; border-bottom: 0.3mm dotted rgba(90,60,42,.4); }
+  .prod .pen { font-family: 'Jost', sans-serif; font-size: 9.5pt; letter-spacing: .08em; color: #A87A43; white-space: nowrap; }
+  .prod .pdesc { font-family: 'Jost', sans-serif; font-weight: 300; color: #5A3C2A; font-size: 11pt; line-height: 1.45; margin-top: 2.5mm; }
+
+  .sect-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; color: #2E2018; font-size: 24pt; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 14mm; margin-top: 3mm; }
+  .grid .g { display: flex; align-items: baseline; gap: 3mm; }
+  .grid .g .name { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #2E2018; font-size: 16pt; white-space: nowrap; }
+  .grid .g .lead { flex: 1; border-bottom: 0.3mm dotted rgba(90,60,42,.4); }
+  .fill-box { background: #2E2018; border-radius: 3mm; padding: 7mm 9mm; margin-top: 9mm; }
+  .fill-box .k { color: #E7C99A; font-size: 8.5pt; letter-spacing: .4em; text-transform: uppercase; font-weight: 500; }
+  .fill-box .list { font-family: 'Cormorant Garamond', serif; color: #F5EDDE; font-size: 14pt; line-height: 1.5; margin-top: 3.5mm; }
+
+  /* final page */
+  .final-panel { flex: 1; background: #2E2018; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; text-align: center; padding: 0 20mm; }
+  .final-panel .frame { position: absolute; inset: 8mm; border: 0.35mm solid rgba(199,154,94,.35); }
+  .final-panel .t { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; color: #F5EDDE; font-size: 26pt; margin-top: 6mm; }
+  .final-panel .d { font-family: 'Jost', sans-serif; font-weight: 300; color: #E7D3B0; font-size: 11pt; line-height: 1.55; margin-top: 4mm; max-width: 150mm; }
+  .final-panel .lines { font-family: 'Jost', sans-serif; color: #E7D3B0; font-size: 11pt; letter-spacing: .04em; line-height: 1.9; margin-top: 9mm; }
+  .final-panel .lines b { color: #C79A5E; font-weight: 500; }
+
+  @media screen {
+    body { padding: 22px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+    .sheet { box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+  }
+</style>
+</head>
+<body>
+
+  <!-- PÁGINA 1 · PORTADA -->
+  <section class="sheet">
+    <div class="shot" style="height:150mm;"><img src="assets/babka-top.jpg"></div>
+    <div class="cover-panel">
+      <div class="frame"></div>
+      <div class="mono"><span>N</span></div>
+      <div class="k">Panadería Artesanal</div>
+      <div class="logo">NISO</div>
+      <div class="slogan">El arte de lo horneado · Carta</div>
+      <div class="word">Baked fresh · Hecho a mano · Tuluá, Valle</div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 2 · PANADERÍA -->
+  <section class="sheet">
+    <div class="body">
+      <div class="phead"><span class="pk">01 · Panadería</span><span class="pline"></span></div>
+      <div class="prod">
+        <div class="shot" style="height:104mm;"><img src="assets/babka-sliced.jpg" style="object-position:center 55%;"></div>
+        <div class="cap"><span class="pname">Babka de chocolate</span><span class="lead"></span><span class="pen">chocolate babka</span></div>
+        <div class="pdesc">Masa brioche trenzada a mano, corazón de chocolate. Nuestra especialidad.</div>
+      </div>
+      <div class="prod" style="margin-top:9mm;">
+        <div class="shot" style="height:78mm;"><img src="assets/cinnamon-pan.jpg"></div>
+        <div class="cap"><span class="pname">Rollos de canela</span><span class="lead"></span><span class="pen">cinnamon rolls</span></div>
+        <div class="pdesc">Suaves y esponjosos, con frosting de queso crema.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 3 · REPOSTERÍA -->
+  <section class="sheet">
+    <div class="body">
+      <div class="phead"><span class="pk">02 · Repostería</span><span class="pline"></span></div>
+      <div class="prod">
+        <div class="shot" style="height:104mm;"><img src="assets/cheesecake.jpg"></div>
+        <div class="cap"><span class="pname">Cheesecake de arándanos</span><span class="lead"></span><span class="pen">blueberry</span></div>
+        <div class="pdesc">Cremoso, sobre base artesanal, con compota de arándanos.</div>
+      </div>
+      <div class="prod" style="margin-top:9mm;">
+        <div class="shot" style="height:78mm;"><img src="assets/almond-cake.jpg"></div>
+        <div class="cap"><span class="pname">Torta almendrada</span><span class="lead"></span><span class="pen">almond cake</span></div>
+        <div class="pdesc">De banano, con almendras tostadas y chispas de chocolate.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 4 · TORTAS -->
+  <section class="sheet">
+    <div class="body">
+      <div class="phead"><span class="pk">03 · Tortas</span><span class="pline"></span></div>
+      <div class="shot" style="height:96mm;"><img src="assets/choc-cake.jpg" style="object-position:center 42%;"></div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:9mm;">
+        <div class="sect-title">Nuestras tortas</div>
+        <div class="kick" style="font-size:8.5pt;letter-spacing:.24em;color:#A87A43;">Todas con relleno a elección</div>
+      </div>
+      <div class="grid">
+        <div class="g"><span class="name">Chocolate</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Chocovainilla marmoleada</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Vainilla</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Zanahoria</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Naranja</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Arándanos</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Red velvet</span><span class="lead"></span></div>
+        <div class="g"><span class="name">Tipo Matilda</span><span class="lead"></span></div>
+      </div>
+      <div class="fill-box">
+        <div class="k">Rellenos a elegir</div>
+        <div class="list">Relleno de chocolate · Brigadeiro de chocolate · Brigadeiro de maracuyá · Betún de arándanos · Arequipe</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 5 · PERSONALIZADAS + CONTACTO -->
+  <section class="sheet">
+    <div class="shot" style="height:150mm;"><img src="assets/custom-cake.jpg" style="object-position:center 32%;"></div>
+    <div class="final-panel">
+      <div class="frame"></div>
+      <div class="mono"><span>N</span></div>
+      <div class="t">Tortas personalizadas</div>
+      <div class="d">Diseñamos tu torta para cumpleaños, aniversarios y toda celebración. Cuéntanos tu idea y la hacemos realidad.</div>
+      <div class="lines">WhatsApp <b>+57 322 618 2014</b><br>Instagram <b>@niso.bakery_</b> · TikTok <b>@niso_bakery</b><br>Domicilio en Tuluá, Valle · Recoge en sitio</div>
+    </div>
+  </section>
+
+<script>
+addEventListener('load', () => {
+  (async () => {
+    try { await document.fonts.ready; } catch (e) {}
+    const imgs = Array.from(document.images).filter((i) => !i.complete);
+    await Promise.race([
+      Promise.allSettled(imgs.map((i) => i.decode())),
+      new Promise((r) => setTimeout(r, 8000)),
+    ]);
+    setTimeout(() => window.print(), 500);
+  })();
+});
+</script>
+</body>
+</html>

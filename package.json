@@ -1,0 +1,29 @@
+{
+  "name": "niso-generator-tool",
+  "version": "2.0.0",
+  "description": "Generador de piezas gráficas NISO (PNG y PDF)",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "preparar-fotos": "./scripts/preparar-fotos.sh",
+    "preparar-amor-amistad": "./scripts/preparar-amor-amistad.sh",
+    "fotos": "./scripts/preparar-fotos.sh",
+    "reel": "./scripts/preparar-fotos.sh && node src/render-reel.js",
+    "posts": "node src/render-posts.js",
+    "stories": "node src/render-stories.js",
+    "destacadas": "node src/render-destacadas.js",
+    "flyers": "node src/render-flyers.js",
+    "menu": "node src/render-menu-carta.js",
+    "carta-precios": "node src/render-carta-precios.js",
+    "catalogo": "node src/render-catalogo.js",
+    "promos": "node src/render-promocionales.js",
+    "promos-amor-amistad": "node src/render-promocionales-amor-amistad.js",
+    "campana-amor-amistad": "./scripts/preparar-amor-amistad.sh && node src/render-promocionales-amor-amistad.js",
+    "marca": "node src/render-marca.js",
+    "logos": "node src/render-logos.js",
+    "board": "node src/render-board.js"
+  },
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>export</title>
+<style>html,body{margin:0;background:#1C1510;}#vp{position:fixed;left:0;top:0;width:924px;height:540px;overflow:hidden;background:#1C1510;}#vp>*{position:absolute;left:0;top:0;transform-origin:top left;}#idx{color:#E7D3B0;font-family:monospace;padding:12px;}</style>
+</head><body>
+<div id="idx">loading…</div>
+<div id="vp" style="display:none;"></div>
+<script>
+window.FRAMES=[]; window.__ready=false;
+function px(s,p){const m=(s||'').match(new RegExp(p+':\\s*(\\d+)px'));return m?+m[1]:0;}
+(async function(){
+  let txt=''; try{txt=await (await fetch('src_board.html')).text();}catch(e){}
+  let inner=txt; const o=txt.indexOf('<x-dc'); if(o>-1){const gt=txt.indexOf('>',o);const c=txt.lastIndexOf('</x-dc>');inner=txt.slice(gt+1,c);}
+  const doc=new DOMParser().parseFromString('<div id=R>'+inner+'</div>','text/html');
+  doc.getElementById('R').querySelectorAll('[data-screen-label]').forEach(el=>{
+    const st=el.getAttribute('style')||''; const w=px(st,'width'),h=px(st,'height');
+    if(w&&h) window.FRAMES.push({label:el.getAttribute('data-screen-label'),w,h,html:el.outerHTML});
+  });
+  window.__ready=true; document.getElementById('idx').textContent='ready '+window.FRAMES.length;
+})();
+window.showRaw=function(i){const f=window.FRAMES[i];const vp=document.getElementById('vp');vp.style.display='block';vp.innerHTML=f.html;const el=vp.firstElementChild;el.style.margin='0';return f.label+' '+f.w+'x'+f.h;};
+window.setTile=function(sx,sy){const el=document.getElementById('vp').firstElementChild;el.style.transform='translate('+(-sx)+'px,'+(-sy)+'px)';return sx+','+sy;};
+window.showFit=function(i){const f=window.FRAMES[i];const vp=document.getElementById('vp');vp.style.display='block';vp.style.background='#1C1510';vp.innerHTML=f.html;const el=vp.firstElementChild;el.style.margin='0';const s=Math.min(924/f.w,540/f.h);el.style.transformOrigin='top left';el.style.transform='translate('+((924-f.w*s)/2)+'px,'+((540-f.h*s)/2)+'px) scale('+s+')';return f.label;};
+</script>
+</body></html>

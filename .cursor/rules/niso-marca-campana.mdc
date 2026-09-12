@@ -1,0 +1,15 @@
+---
+description: Aplica el manual de marca NISO en todo el proyecto (copy, diseño, generadores).
+alwaysApply: true
+---
+
+# Marca NISO
+
+En este repositorio, **siempre** sigue el manual de marca y campaña NISO.
+
+1. Lee y aplica `.cursor/skills/niso-marca-campana/SKILL.md` (y `reference.md` si necesitas detalle).
+2. Datos de contacto y paleta en código: `src/marca.js` — no contradecir esos valores.
+3. Referencia visual local (imágenes): `entrada/marca/`.
+4. Al tocar generadores, respeta `src/paths.js` (`entrada/` / `salida/`) y los patrones en `referencia/`.
+
+Cualquier pieza nueva (HTML, CONFIG, copy) debe sonar **cálida, artesanal y premium**, con tipografías **Cormorant Garamond + Jost** y colores del manual.

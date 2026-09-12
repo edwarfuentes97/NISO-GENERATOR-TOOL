@@ -1,0 +1,24 @@
+node_modules/
+.DS_Store
+*.log
+
+# Fotos y renders locales (el repo en GitHub es solo código)
+entrada/**
+!entrada/**/
+!entrada/**/.gitkeep
+!entrada/README.md
+!entrada/marca/README.md
+
+salida/**
+!salida/**/
+!salida/**/.gitkeep
+!salida/README.md
+
+# Prototipo HTML antiguo (npm run board): HTML/JS en Git; imágenes solo en tu PC
+archivo/**
+!archivo/**/
+!archivo/**/*.html
+!archivo/**/*.js
+!archivo/**/*.css
+!archivo/**/.gitkeep
+!archivo/README.md
