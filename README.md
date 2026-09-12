@@ -15,7 +15,7 @@ niso-generator-tool/
 │   ├── listas/
 │   │   ├── general/  ← Fotos ya optimizadas (las usan casi todos los generadores)
 │   │   └── amor-amistad/
-│   ├── amor-amistad/ ← Fotos originales de campaña (IMG_4242, etc.)
+│   ├── amor-amistad/ ← Fotos de campaña (cualquier JPG/PNG/HEIC)
 │   └── marca/        ← Manual de marca (paleta, logotipo, fundamentos)
 ├── salida/           ← Aquí aparecen los PNG/PDF generados
 ├── src/              ← Código de los generadores (solo editas CONFIG si cambias textos)
@@ -90,7 +90,7 @@ La resolución es **doble** (1080 → 2160 px) para que se vean nítidos en Inst
 | `npm run carta-precios` | Carta con precios (Instagram + PDF) |
 | `npm run catalogo` | Carrusel de catálogo |
 | `npm run promos` | Promocionales genéricos |
-| `npm run campana-amor-amistad` | Campaña Amor y Amistad (6 piezas) |
+| `npm run campana-amor-amistad` | Amor y Amistad: una feed + story por cada foto en `entrada/amor-amistad/` |
 | `npm run marca` | Banners de marca |
 | `npm run logos` | Variantes de logo |
 | `npm run reel` | Reel de proceso (edita `src/render-reel.js`) |
@@ -100,20 +100,19 @@ La resolución es **doble** (1080 → 2160 px) para que se vean nítidos en Inst
 
 ## Campaña Amor y Amistad
 
-1. Pon las tres fotos en `entrada/amor-amistad/` con estos nombres (o reemplaza las que ya hay):
-   - `IMG_4242.JPG`
-   - `IMG_4244.JPG`
-   - `IMG_4245.JPG`
+1. Pon **todas** las fotos de la campaña en `entrada/amor-amistad/` (JPG, PNG o HEIC; cualquier nombre).
 
-2. Genera todo:
+2. Un solo comando (borra la salida anterior de esta campaña, convierte fotos y genera piezas):
 
    ```bash
    npm run campana-amor-amistad
    ```
 
-3. Revisa `salida/promocionales-amor-amistad/`.
+3. Por cada imagen obtienes dos PNG en `salida/promocionales-amor-amistad/`:
+   - `01-nombre-feed.png` (1080×1080)
+   - `01-nombre-story.png` (1080×1920)
 
-Textos y encuadres: `src/render-promocionales-amor-amistad.js` → bloque `CONFIG`.
+Textos comunes y encuadre: bloque `CONFIG` en `src/render-promocionales-amor-amistad.js`.
 
 ---
 

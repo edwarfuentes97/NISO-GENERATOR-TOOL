@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "preparar-fotos": "./scripts/preparar-fotos.sh",
-    "preparar-amor-amistad": "./scripts/preparar-amor-amistad.sh",
+    
     "fotos": "./scripts/preparar-fotos.sh",
     "reel": "./scripts/preparar-fotos.sh && node src/render-reel.js",
     "posts": "node src/render-posts.js",
@@ -17,8 +17,8 @@
     "carta-precios": "node src/render-carta-precios.js",
     "catalogo": "node src/render-catalogo.js",
     "promos": "node src/render-promocionales.js",
-    "promos-amor-amistad": "node src/render-promocionales-amor-amistad.js",
-    "campana-amor-amistad": "./scripts/preparar-amor-amistad.sh && node src/render-promocionales-amor-amistad.js",
+    "campana-amor-amistad": "node src/render-promocionales-amor-amistad.js",
+    "promos-amor-amistad": "npm run campana-amor-amistad",
     "marca": "node src/render-marca.js",
     "logos": "node src/render-logos.js",
     "board": "node src/render-board.js"

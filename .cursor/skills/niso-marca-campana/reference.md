@@ -129,6 +129,6 @@ Fuentes cargadas en `src/lib.js` (Google Fonts): Cormorant Garamond, Jost, Sacra
 
 ## Campañas temporales (ej. Amor y Amistad)
 
-- Fotos en `entrada/amor-amistad/` → `npm run preparar-amor-amistad`.
+- Fotos en `entrada/amor-amistad/` → un comando: `npm run campana-amor-amistad` (convierte y genera feed + story por foto).
 - Config: `src/render-promocionales-amor-amistad.js`.
 - La narrativa puede hablar de regalo, corazón, compartir; **la identidad visual sigue siendo NISO** (no reemplazar chocolate/kraft por rosa/rojo neón salvo petición explícita).
