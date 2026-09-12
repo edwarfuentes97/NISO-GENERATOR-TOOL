@@ -3,7 +3,7 @@ node_modules/
 *.log
 
 # Fotos y renders locales (el repo en GitHub es solo código)
-entrada/**
+
 !entrada/**/
 !entrada/**/.gitkeep
 !entrada/README.md
