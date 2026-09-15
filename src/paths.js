@@ -11,6 +11,7 @@ module.exports = {
   ENTRADA_MARCA: path.join(ROOT, 'entrada', 'marca'),
   ENTRADA_LISTAS_GENERAL: path.join(ROOT, 'entrada', 'listas', 'general'),
   ENTRADA_LISTAS_AMOR_AMISTAD: path.join(ROOT, 'entrada', 'listas', 'amor-amistad'),
+    ENTRADA_CARTA_PRECIOS: path.join(ROOT, 'entrada', 'carta-precios'),
   SALIDA: path.join(ROOT, 'salida'),
   REFERENCIA: path.join(ROOT, 'referencia'),
   ARCHIVO_DISENO_HTML: path.join(ROOT, 'archivo', 'diseno-html'),

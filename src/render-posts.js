@@ -10,26 +10,80 @@ const CONFIG = {
   carpetaSalida: 'posts-nuevos',
 
   posts: [
-    // --- Post con foto (estilo "Post Babka" del manual) ---
-    // pos (opcional): encuadre del recorte, ej. 'center 40%'
     {
-      tipo: 'foto',
-      nombre: '01-ejemplo-foto',
-      img: 'democumpleanos.jpg',
-      kicker: 'Nuestra especialidad',
-      titulo: 'Babka de<br>Chocolate',
-      sub: 'Chocolate babka · masa brioche trenzada a mano',
+      "tipo": "foto",
+      "nombre": "1 Babka de Chocolate",
+      "img": "babka_chocolate.jpg",
+      "kicker": "NUESTRA ESPECIALIDAD",
+      "titulo": "Babka de <br>Chocolate",
+      "sub": "Chocolate babka · masa brioche trenzada a mano"
     },
+    {
+      "tipo": "foto",
+      "nombre": "2Cheesecake Frutos Rojos Vista Superior",
+      "img": "chesscake_arriba.jpg",
+      "kicker": "CLÁSICO IRRESISTIBLE",
+      "titulo": "Cheesecake de <br>Frutos Rojos",
+      "sub": "Cremoso y suave · mermelada artesanal y fruta fresca"
+    },
+    {
+      "tipo": "foto",
+      "nombre": "3 Cheesecake Frutos Rojos Textura",
+      "img": "chesscake_lado.jpg",
+      "kicker": "TEXTURA PERFECTA",
+      "titulo": "Cheesecake de <br>Frutos Rojos",
+      "sub": "Base crocante · equilibrio perfecto de dulzor"
+    },
+    {
+      "tipo": "foto",
+      "nombre": "4 Torta Cumpleaños Chocolate",
+      "img": "demo_cumpleanos.jpg",
+      "kicker": "CELEBRA CON NOSOTROS",
+      "titulo": "Torta de <br>Cumpleaños",
+      "sub": "Doble chocolate · el regalo perfecto para tu día especial"
+    },
+    {
+      "tipo": "foto",
+      "nombre": "5 Rollos de Canela Horneados",
+      "img": "rollos_canela_despues.jpg",
+      "kicker": "RECIÉN HORNEADOS",
+      "titulo": "Rollos de <br>Canela",
+      "sub": "Esponjosos y cálidos · el aroma que enamora",
+      "center": "10%"
 
-    // --- Post de texto (estilo "Post Eslogan": fondo dorado + frase) ---
-    // fondo: 'dorado' | 'oscuro' | 'crema'
-    {
-      tipo: 'texto',
-      nombre: '02-ejemplo-frase',
-      frase: 'Hecho a mano,<br>horneado<br>a diario',
-      pie: 'Alta panadería artesanal',
-      fondo: 'dorado',
     },
+    {
+      "tipo": "foto",
+      "nombre": "6 Proceso Rollos de Canela",
+      "img": "royo_canela_antes.jpg",
+      "kicker": "HECHO A MANO",
+      "titulo": "Magia en <br>preparación",
+      "sub": "Abundante relleno de canela · magia en cada vuelta"
+    },
+    {
+      "tipo": "foto",
+      "nombre": "7 Torta de Maracuyá",
+      "img": "torta_maracuya.jpg",
+      "kicker": "TOQUE TROPICAL",
+      "titulo": "Torta de <br>Maracuyá",
+      "sub": "Cítrica y refrescante · cubierta con jalea natural y naranjas",
+      "center": "10%"
+    },
+    {
+      "tipo": "foto",
+      "nombre": "8 Torta de Zanahoria",
+      "img": "torta_zanahoria.jpg",
+      "kicker": "EL FAVORITO DE TODOS",
+      "titulo": "Torta de <br>Zanahoria",
+      "sub": "Zanahoria fresca y toque de canela · frosting de queso crema y almendras tostadas"
+    },
+    {
+      "tipo": "texto",
+      "nombre": "ejemplo-frase",
+      "frase": "Hecho a mano,<br>horneado<br>a diario",
+      "pie": "Alta panadería artesanal",
+      "fondo": "dorado"
+    }
   ],
 };
 // ----------------------------------------------------

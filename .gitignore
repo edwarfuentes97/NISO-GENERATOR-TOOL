@@ -7,6 +7,8 @@ node_modules/
 !entrada/**/
 !entrada/**/.gitkeep
 !entrada/README.md
+!entrada/carta-precios/
+!entrada/carta-precios/**
 !entrada/marca/README.md
 
 salida/**

@@ -42,7 +42,8 @@ const CONFIG = {
       img: 'rollos-canela_2.jpg',
       desc: 'Suaves y esponjosos, con frosting de queso crema.',
       precios: [{ tamano: 'Unidad', precio: '$8.000' }],
-      nota: 'Desde 12 unidades: $7.500 c/u',
+      nota: 'Encargos a partir de 6 unidades. Llevando 12 o más: $7.500 c/u',
+
     },
 
     {
@@ -54,12 +55,13 @@ const CONFIG = {
         { tamano: 'Pequeña', precio: '$16.000' },
         { tamano: 'Grande · 25 cm', precio: '$26.000' },
       ],
+      nota: 'Las babkas pequeñas no se venden por unidad (mínimo 2).',
     },
 
     {
       nombre: 'Cheesecake Frutos Rojos',
       en: 'Cheesecake with red fruits',
-      img: 'chesscakeFrutosRojos.jpg',
+      img: 'chesscake_lado.jpg',
       desc: 'Cremoso y suave, horneado lentamente sobre base artesanal, coronado con glaseado de frutos rojos y fruta fresca.',
       precios: [
         { tamano: 'Personal · 2 a 4 porciones', precio: '$32.000' },
@@ -115,7 +117,7 @@ const CONFIG = {
       nombre: 'Torta de zanahoria',
       en: 'Carrot cake',
       img: 'zanahoria-simple.jpg',
-      desc: 'Deliciosa torta de zanahoria con frosting de queso crema.',
+      desc: 'Deliciosa torta de zanahoria.',
       precios: [
         { tamano: 'Personal · 2 a 4 porciones', precio: '$17.000' },
         { tamano: 'Mediano · 6 a 8 porciones', precio: '$24.000' },
@@ -128,7 +130,7 @@ const CONFIG = {
     {
       nombre: 'Zanahoria - frosting de queso crema',
       en: 'Carrot cake',
-      img: 'zanahoria_completa.jpg',
+      img: 'torta_zanahoria.jpg',
       desc: 'Deliciosa torta de zanahoria con frosting de queso crema.',
       precios: [
         { tamano: 'Personal · 2 a 4 porciones', precio: '$21.000' },
@@ -173,8 +175,8 @@ const CONFIG = {
       precios: [
         { tamano: 'Personal · 2 a 4 porciones', precio: '$16.000' },
         { tamano: 'Mediano · 6 a 8 porciones', precio: '$26.000' },
-        { tamano: 'Grande · 10 a 12 porciones', precio: '$40.000' },
-        { tamano: 'Familiar · 16 a 18 porciones', precio: '$52.000' },
+        { tamano: 'Grande · 10 a 12 porciones', precio: '$42.000' },
+        { tamano: 'Familiar · 16 a 18 porciones', precio: '$59.000' },
       ],
       nota: 'Personalízala con frutos secos por $6.000 más.',
     },
@@ -411,7 +413,7 @@ function hojaProducto(p) {
 
 // ================= RENDER =================
 const paths = require('./paths');
-const ASSETS = paths.ENTRADA_LISTAS_GENERAL;
+const ASSETS = paths.ENTRADA_CARTA_PRECIOS;
 const OUT_BASE = paths.SALIDA;
 const MIME = {
   '.jpg': 'image/jpeg',
@@ -496,7 +498,7 @@ if (require.main === module) {
         html: igCierre(),
       },
     ];
-    await render(CONFIG.carpetaInstagram, FRAMES);
+    await render(CONFIG.carpetaInstagram, FRAMES, { assetsDir: ASSETS });
 
     // 2) PDF imprimible
     await generarPdf();
