@@ -15,7 +15,7 @@ const CONFIG = {
     {
       tipo: 'foto',
       nombre: '01-ejemplo-foto',
-      img: '1.jpg',
+      img: 'democumpleanos.jpg',
       kicker: 'Nuestra especialidad',
       titulo: 'Babka de<br>Chocolate',
       sub: 'Chocolate babka · masa brioche trenzada a mano',
